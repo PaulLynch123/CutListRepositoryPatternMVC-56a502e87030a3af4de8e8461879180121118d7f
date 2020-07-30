@@ -34,7 +34,6 @@ namespace CutList.DataAccess.Data.Repository
         {
             var objectFromDb = _db.WorkOrder.FirstOrDefault(w => w.WON == workOrder.WON);
 
-            objectFromDb.WON = workOrder.ProjectId;
             //make a new versionDate object???
             objectFromDb.RequiredDate = workOrder.RequiredDate;
             //from ApplicationUser

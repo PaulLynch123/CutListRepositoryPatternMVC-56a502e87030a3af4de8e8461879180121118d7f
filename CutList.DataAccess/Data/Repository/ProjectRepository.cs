@@ -33,7 +33,6 @@ namespace CutList.DataAccess.Data.Repository
         {
             var objectFromDb = _db.Project.FirstOrDefault(p => p.ProjectId == project.ProjectId);
 
-            objectFromDb.ProjectId = project.ProjectId;
             objectFromDb.ProjectName = project.ProjectName;
             objectFromDb.ClientName = project.ClientName;
             objectFromDb.LeadEngineer = project.LeadEngineer;
