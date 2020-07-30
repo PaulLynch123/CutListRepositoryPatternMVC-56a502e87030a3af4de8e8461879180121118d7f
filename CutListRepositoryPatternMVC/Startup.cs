@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -45,6 +45,10 @@ namespace CutListRepositoryPatternMVC
             //remove the above functionality for this application
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //add unitOfWork
+            //services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             //I have included RazorRuntimeCOmplication neGet package (MVC)
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();

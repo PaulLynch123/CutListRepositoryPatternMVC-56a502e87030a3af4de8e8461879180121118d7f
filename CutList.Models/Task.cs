@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CutList.Models
 {
-    class Task
+    public class Task
     {
         [Key]
         public int TaskId { get; set; }

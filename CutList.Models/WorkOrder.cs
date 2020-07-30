@@ -10,7 +10,7 @@ using static CutList.Utility.CutListEnums;
 
 namespace CutList.Models
 {
-    class WorkOrder
+    public class WorkOrder
     {
         [Key]
         public int WON { get; set; }        //this will auto increment???

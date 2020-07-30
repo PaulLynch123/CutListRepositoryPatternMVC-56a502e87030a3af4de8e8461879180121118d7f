@@ -9,7 +9,7 @@ using static CutList.Utility.CutListEnums;
 
 namespace CutList.Models
 {
-    class PartOrder
+    public class PartOrder
     {
         //this is the individual part for this Work Order
         [Key]

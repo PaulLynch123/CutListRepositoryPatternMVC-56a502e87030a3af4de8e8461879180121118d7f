@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CutList.Models
 {
-    class VersionDate
+    public class VersionDate
     {
         [Key]
         public int DateId { get; set; }

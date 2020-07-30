@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CutList.Models
 {
-    class Project
+    public class Project
     {
         [Key]
         public int ProjectId { get; set; }

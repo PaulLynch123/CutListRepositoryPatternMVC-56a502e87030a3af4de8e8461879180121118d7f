@@ -5,10 +5,10 @@ using System.Text;
 
 namespace CutList.Models
 {
-    class CutList
+    public class CutListCheck
     {
         [Key]
-        public int CutListId { get; set; }
+        public int CutListCheckId { get; set; }
 
         //possible auto
         //public VersionDate DateNeeded { get; set; }
@@ -24,7 +24,6 @@ namespace CutList.Models
         public Task MouldCut { get; set; }
         public Task Pour { get; set; }
         public Task Assy { get; set; }
-
 
     }
 }
