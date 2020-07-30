@@ -14,4 +14,8 @@
     <ProjectReference Include="..\CutList.Utility\CutList.Utility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
 </Project>
