@@ -23,7 +23,7 @@ namespace CutList.DataAccess.Data
         public DbSet<CutListCheck> CutListCheck { get; set; }
         public DbSet<Task> Task { get; set; }
         public DbSet<DeliveryDetail> DeliveryDetail { get; set; }
-
+        public DbSet<VersionDate> VersionDate { get; set; }
 
     }
 }
