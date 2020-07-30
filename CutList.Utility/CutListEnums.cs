@@ -14,14 +14,14 @@ namespace CutList.Utility
             [Display(Name = "Euro Standard")]
             EuroStandard,
             //1
-            //
+            //green (L1), red (L2), yellow (L3) and blue (neutral)
             [Display (Name = "Euro Alternative")]
             EuroAlternative,
             //2
             //red (L1), yellow (L2), blue (L3) and black (neutral)
             India,
             //3
-            //green (L1), red (L2), yellow (L3) and blue (neutral)
+            //black (L1), brown (L2), blue (L3) and grey (neutral)
             [Display(Name = "North America")]
             NorthAmerica
         }

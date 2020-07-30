@@ -22,7 +22,7 @@ namespace CutList.Models
         //ModelState.AddModelError(nameof(jobApplication.DOB), "Date of Birth cannot be in the future");
 
 
-        public bool Approved { get; set; }          //if anything changes must go to unapproved again
+        public string ApprovalStatus { get; set; }          //if anything changes must go to unapproved / pending
         public ApplicationUser ApprovalEngineer { get; set; }
         public ApplicationUser CheckedByEngineer { get; set; }
 
