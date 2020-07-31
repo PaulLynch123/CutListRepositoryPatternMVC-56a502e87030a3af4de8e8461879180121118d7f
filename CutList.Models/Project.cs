@@ -2,13 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace CutList.Models
 {
     public class Project
     {
+        //need to get Project ID from another database
         [Key]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ProjectId { get; set; }
 
         [Required]

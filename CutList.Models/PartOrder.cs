@@ -28,7 +28,9 @@ namespace CutList.Models
         public bool EarthWarning { get; set; }
         public int EarthSize { get; set; }          //must be more than Amps in WorkOrder
 
+        [DisplayFormat(NullDisplayText = "No colour")]
         public CoverColour? JSCoverColour { get; set; }         //null is better so I can check if null later
+        [DisplayFormat(NullDisplayText = "No colour")]
         public CoverColour? JSPCoverColour { get; set; }         //null is better so I can check if null later
 
 
