@@ -19,11 +19,13 @@ namespace CutList.Models
         [Required]
         public string ClientName { get; set; }              //can become a list of clients
         [Required(ErrorMessage = "Please select a lead engineer")]
-        public ApplicationUser LeadEngineer { get; set; }   //create ApplicationUser from IdentityUser
+
+        public string LeadEngineerString { get; set; }
+        //public ApplicationUser LeadEngineer { get; set; }   //create ApplicationUser from IdentityUser
 
 
         //navigation
-        public int WON { get; set; }
+        //public int WON { get; set; }
         public ICollection<WorkOrder> WorkOrder { get; set; }
         
 

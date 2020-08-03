@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace CutList.Models
@@ -25,5 +26,15 @@ namespace CutList.Models
         public Task Pour { get; set; }
         public Task Assy { get; set; }
 
+
+        //---------foreign keys and navigation---------------
+
+        public int OrderNo;
+        [ForeignKey("OrderNo")]
+        public PartOrder PartOrder { get; set; }
+
+
+        //public ICollection<Task> Task { get; set; }
+        //public ICollection<VersionDate> VersionDate { get; set; }
     }
 }

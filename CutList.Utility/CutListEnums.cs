@@ -116,5 +116,15 @@ namespace CutList.Utility
             [Display(Name = "Other... see notes")]
             Other
         }
+
+
+        public enum SilverLabel
+        {
+            SilverLabel1,
+            SilverLabel2,
+            SilverLabel3,
+            [Display(Name = "Other... see notes")]
+            Other
+        }
     }
 }

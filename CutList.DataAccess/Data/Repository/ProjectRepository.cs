@@ -35,7 +35,7 @@ namespace CutList.DataAccess.Data.Repository
 
             objectFromDb.ProjectName = project.ProjectName;
             objectFromDb.ClientName = project.ClientName;
-            objectFromDb.LeadEngineer = project.LeadEngineer;
+            objectFromDb.LeadEngineerString = project.LeadEngineerString;
 
             _db.SaveChanges();
 

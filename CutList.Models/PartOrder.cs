@@ -53,8 +53,10 @@ namespace CutList.Models
         public WorkOrder WorkOrder { get; set; }
 
         //PartOrder
-        public int CutListId { get; set; }
-        [ForeignKey("CutListId")]
-        public CutList CutList { get; set; }
+        //public int CutListId { get; set; }
+        //[ForeignKey("CutListId")]
+        public CutListCheck CutListCheck { get; set; }
+
+        //public ICollection<VersionDate> VersionDate { get; set; }
     }
 }

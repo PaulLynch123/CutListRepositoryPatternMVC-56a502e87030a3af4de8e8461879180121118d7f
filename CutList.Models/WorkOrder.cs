@@ -23,8 +23,11 @@ namespace CutList.Models
 
 
         public string ApprovalStatus { get; set; }          //if anything changes must go to unapproved / pending
-        public ApplicationUser ApprovalEngineer { get; set; }
-        public ApplicationUser CheckedByEngineer { get; set; }
+
+        public string ApprovalEngineerString { get; set; }
+        //public ApplicationUser ApprovalEngineer { get; set; }
+        public string CheckedByEngineerString { get; set; }
+        //public ApplicationUser CheckedByEngineer { get; set; }
 
         public string JobNotes { get; set; }
 
@@ -56,9 +59,11 @@ namespace CutList.Models
         public Project Project { get; set; }
 
         //PartOrder
-        public int OrderNo { get; set; }
-        [ForeignKey("OrderNo")]
+        //public int OrderNo { get; set; }
+        //[ForeignKey("OrderNo")]
         public ICollection<PartOrder> PartOrder { get; set; }
+
+        public ICollection<VersionDate> VersionDate { get; set; }
 
     }
 }

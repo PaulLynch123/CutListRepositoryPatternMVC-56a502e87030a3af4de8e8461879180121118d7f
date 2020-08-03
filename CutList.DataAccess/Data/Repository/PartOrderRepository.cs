@@ -61,16 +61,16 @@ namespace CutList.DataAccess.Data.Repository
             _db.SaveChanges();
         }//update()
 
-        //use to change status only
-        public void ChangeWorkOrderStatus(int wON, string approvalStatus)
-        {
-            //aproval status will come from string options in Utility.StaticDetails
-            var orderFromDb = _db.WorkOrder.FirstOrDefault(w => w.WON == wON);
-            orderFromDb.ApprovalStatus = approvalStatus;
-            //MIGHT BE ABLE TO SET PERSOn WITH THIS
-            //objectFromDb.ApprovalEngineer = (ClaimsIdentity)this.ApplicationUser.Identity;
+        ////use to change status only
+        //public void ChangePartOrderStatus(int orderNumber, string approvalStatus)
+        //{
+        //    //aproval status will come from string options in Utility.StaticDetails
+        //    var orderFromDb = _db.PartOrder.FirstOrDefault(p => p.OrderNo == orderNumber);
+        //    orderFromDb.ApprovalStatus = approvalStatus;
+        //    //MIGHT BE ABLE TO SET PERSOn WITH THIS
+        //    //objectFromDb.ApprovalEngineer = (ClaimsIdentity)this.ApplicationUser.Identity;
             
-            _db.SaveChanges();
-        }
+        //    _db.SaveChanges();
+        //}
     }
 }

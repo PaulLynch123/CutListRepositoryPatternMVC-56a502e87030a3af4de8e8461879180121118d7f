@@ -13,12 +13,14 @@ namespace CutList.Models
         public string TaskName { get; set; }
 
         [Display(Name ="Employee who comleted task")]
-        public ApplicationUser EmployeeChoosen { get; set; }
+        public string EmployeeChoosen { get; set; }
+        //public ApplicationUser EmployeeChoosen { get; set; }
 
         //auto
         public VersionDate RequiredDate { get; set; }
-        
-        public ApplicationUser SignedIn { get; set; }   //create ApplicationUser from IdentityUser
+
+        public string SignedIn { get; set; }
+        //public ApplicationUser SignedIn { get; set; }   //create ApplicationUser from IdentityUser
         //auto
         public DateTime CheckedDateTime { get; set; }
 

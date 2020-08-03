@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CutList.DataAccess.Data.Repository.IRepository;
+using System;
 using System.Collections.Generic;
 using System.Text;
 

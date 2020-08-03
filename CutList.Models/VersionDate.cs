@@ -16,21 +16,35 @@ namespace CutList.Models
 
         public bool CurrentDate { get; set; }
 
-        public ApplicationUser SignedIn { get; set; }   //create ApplicationUser from IdentityUser
+        public string SignedIn { get; set; }
+        //public ApplicationUser SignedIn { get; set; }   //create ApplicationUser from IdentityUser
         public DateTime SystemDateTime { get; set; }
 
 
 
 
         //---------Foreign keys and Navigation-----------
-        public int CutListId;
-        [ForeignKey("CutListId")]
-        public CutList CutList { get; set; }
 
         //PartOrder
-        public int TaskId { get; set; }
-        [ForeignKey("TaskId")]
-        public Task Task { get; set; }
+        public int WON { get; set; }
+        [ForeignKey("WON")]
+        public WorkOrder WorkOrder { get; set; }
+
+
+        //public int CutListId;
+        //[ForeignKey("CutListId")]
+        //public CutListCheck CutListCheck { get; set; }
+
+        ////PartOrder
+        //public int OrderNo { get; set; }
+        //[ForeignKey("OrderNo")]
+        //public PartOrder PartOrder { get; set; }
+
+
+
+        //public int TaskId { get; set; }
+        //[ForeignKey("TaskId")]
+        //public Task Task { get; set; }
 
     }
 }
