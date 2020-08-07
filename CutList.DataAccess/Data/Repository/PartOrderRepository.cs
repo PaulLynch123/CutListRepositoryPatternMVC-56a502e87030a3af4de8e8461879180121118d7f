@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using CutList.Utility;
 
 namespace CutList.DataAccess.Data.Repository
 {
@@ -51,10 +52,10 @@ namespace CutList.DataAccess.Data.Repository
             {
                 objectFromDb.ImpbLenght = partOrder.ImpbLenght;
                 //set other lenghts
-                objectFromDb.Conductor = partOrder.ImpbLenght - 42;
-                objectFromDb.Insulator = partOrder.ImpbLenght - 42 - 151;
-                objectFromDb.Housing = partOrder.ImpbLenght - 42 - 151 - 43;
-                objectFromDb.Ip3X = partOrder.ImpbLenght - 42 - 151 - 43 - 50;
+                objectFromDb.Conductor = partOrder.ImpbLenght - StaticDetails.LessConductor;
+                objectFromDb.Insulator = partOrder.ImpbLenght - StaticDetails.LessConductor - StaticDetails.LessInsulator;
+                objectFromDb.Housing = partOrder.ImpbLenght - StaticDetails.LessConductor - StaticDetails.LessInsulator - StaticDetails.LessHousing;
+                objectFromDb.Ip3X = partOrder.ImpbLenght - StaticDetails.LessConductor - StaticDetails.LessInsulator - StaticDetails.LessHousing - StaticDetails.LessIP3X;
             }//if
             
 
