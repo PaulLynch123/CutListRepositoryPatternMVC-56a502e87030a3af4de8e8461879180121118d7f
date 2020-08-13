@@ -22,7 +22,7 @@ namespace CutList.DataAccess.Data.Repository
         //to populate my dropdown
         public IEnumerable<SelectListItem> GetDeliveryDetailListForDropDown()
         {
-            return _db.DeliveryDetail.Select(d => new SelectListItem()
+            return _db.DeliveryDetails.Select(d => new SelectListItem()
             {
                 Text = d.DeliveryId.ToString(),
                 Value = d.DeliveryId.ToString()
@@ -31,7 +31,7 @@ namespace CutList.DataAccess.Data.Repository
 
         public void Update(DeliveryDetail deliveryDetail)
         {
-            var objectFromDb = _db.DeliveryDetail.FirstOrDefault(d => d.DeliveryId == deliveryDetail.DeliveryId);
+            var objectFromDb = _db.DeliveryDetails.FirstOrDefault(d => d.DeliveryId == deliveryDetail.DeliveryId);
 
             objectFromDb.HeatTreatedPallet = deliveryDetail.HeatTreatedPallet;
             objectFromDb.FoilWrapped = deliveryDetail.FoilWrapped;

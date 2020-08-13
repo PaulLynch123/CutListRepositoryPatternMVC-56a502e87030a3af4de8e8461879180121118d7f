@@ -24,17 +24,17 @@ namespace CutList.DataAccess.Data.Repository
         //to populate my dropdown
         public IEnumerable<SelectListItem> GetPartOrderListForDropDown()
         {
-            return _db.PartOrder.Select(p => new SelectListItem()
+            return _db.PartOrders.Select(p => new SelectListItem()
             {
-                Text = p.OrderNo.ToString(),
-                Value = p.OrderNo.ToString()
+                Text = p.PartOrderId.ToString(),
+                Value = p.PartOrderId.ToString()
             });
         }
 
         public void Update(PartOrder partOrder)
         {
             //get partOrder from database that matches form OrderNo
-            var objectFromDb = _db.PartOrder.FirstOrDefault(p => p.OrderNo == partOrder.OrderNo);
+            var objectFromDb = _db.PartOrders.FirstOrDefault(p => p.PartOrderId == partOrder.PartOrderId);
             //update each change
             objectFromDb.Material = partOrder.Material;
             objectFromDb.Stack = partOrder.Stack;

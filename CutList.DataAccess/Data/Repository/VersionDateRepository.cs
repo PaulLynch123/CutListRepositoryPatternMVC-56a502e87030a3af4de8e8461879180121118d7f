@@ -22,10 +22,10 @@ namespace CutList.DataAccess.Data.Repository
         //to populate my dropdown
         public IEnumerable<SelectListItem> GetVersionDateByWorkOrderForDropDown()
         {
-            return _db.VersionDate.Select(vd => new SelectListItem()
+            return _db.VersionDates.Select(vd => new SelectListItem()
             {
-                Text = vd.DateId.ToString() + " - " + vd.CurrentDate,
-                Value = vd.DateId.ToString()
+                Text = vd.VersionDateId.ToString() + " - " + vd.CurrentDate,
+                Value = vd.VersionDateId.ToString()
             });
         }
 

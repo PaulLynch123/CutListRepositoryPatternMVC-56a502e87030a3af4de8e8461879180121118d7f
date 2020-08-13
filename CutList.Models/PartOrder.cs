@@ -13,7 +13,7 @@ namespace CutList.Models
     {
         //this is the individual part for this Work Order
         [Key]
-        public int OrderNo { get; set; }
+        public int PartOrderId { get; set; }
 
         //public int PartId { get; set; }
         [Required(ErrorMessage ="You have to enter the {0} the busbar is made from")]
@@ -48,13 +48,13 @@ namespace CutList.Models
 
 
         //---------------Foreign Keys and Navigation--------------------
-        public int WON;
-        [ForeignKey("WON")]
+        public int WorkOrderId { get; set; }
+        //[ForeignKey("WorkOrderId")]
         public WorkOrder WorkOrder { get; set; }
 
         //PartOrder
-        //public int CutListId { get; set; }
-        //[ForeignKey("CutListId")]
+        //public int CutListCheckId { get; set; }
+        //[ForeignKey("CutListCheckId")]
         public CutListCheck CutListCheck { get; set; }
 
         //public ICollection<VersionDate> VersionDate { get; set; }

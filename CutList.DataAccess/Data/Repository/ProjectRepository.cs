@@ -22,7 +22,7 @@ namespace CutList.DataAccess.Data.Repository
         //to populate my dropdown
         public IEnumerable<SelectListItem> GetProjectListForDropDown()
         {
-            return _db.Project.Select(p => new SelectListItem()
+            return _db.Projects.Select(p => new SelectListItem()
             {
                 Text = p.ProjectId.ToString() + " - " + p.ProjectName,
                 Value = p.ProjectId.ToString()
@@ -31,7 +31,7 @@ namespace CutList.DataAccess.Data.Repository
 
         public void Update(Project project)
         {
-            var objectFromDb = _db.Project.FirstOrDefault(p => p.ProjectId == project.ProjectId);
+            var objectFromDb = _db.Projects.FirstOrDefault(p => p.ProjectId == project.ProjectId);
 
             objectFromDb.ProjectName = project.ProjectName;
             objectFromDb.ClientName = project.ClientName;

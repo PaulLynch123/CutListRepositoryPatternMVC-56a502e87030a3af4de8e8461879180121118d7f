@@ -17,7 +17,7 @@ namespace CutList.Models
         //public ApplicationUser EmployeeChoosen { get; set; }
 
         //auto
-        public VersionDate RequiredDate { get; set; }
+        //public VersionDate RequiredDate { get; set; }
 
         public string SignedIn { get; set; }
         //public ApplicationUser SignedIn { get; set; }   //create ApplicationUser from IdentityUser

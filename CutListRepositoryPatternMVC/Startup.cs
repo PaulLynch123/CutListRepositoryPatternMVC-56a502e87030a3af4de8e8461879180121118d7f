@@ -16,6 +16,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 //replaced the removed one above
 using CutList.DataAccess.Data;
+using CutList.DataAccess.Data.Repository.IRepository;
+using CutList.DataAccess.Data.Repository;
+using CutList.DataAccess.Initializer;
 
 namespace CutListRepositoryPatternMVC
 {
@@ -47,7 +50,10 @@ namespace CutListRepositoryPatternMVC
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             //add unitOfWork
-            //services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            //Add my Initialiser (seeding data, creating and deleting)
+            services.AddScoped<IDbInitialiser, DbInitialiser>();
 
             //I have included RazorRuntimeCOmplication neGet package (MVC)
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
@@ -56,7 +62,7 @@ namespace CutListRepositoryPatternMVC
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         //Middleware pipeline for request and response (context pipeline1 then pipeline2 etc response or 404 no response. Context Object goes back)
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitialiser paulsInitialiser)
         {
             if (env.IsDevelopment())
             {
@@ -74,6 +80,10 @@ namespace CutListRepositoryPatternMVC
             app.UseStaticFiles();
 
             app.UseRouting();
+
+
+            //Add my initialise method
+            paulsInitialiser.Initialise();
 
             app.UseAuthentication();
             app.UseAuthorization();

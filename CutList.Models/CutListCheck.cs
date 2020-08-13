@@ -29,8 +29,8 @@ namespace CutList.Models
 
         //---------foreign keys and navigation---------------
 
-        public int OrderNo;
-        [ForeignKey("OrderNo")]
+        public int PartOrderId { get; set; }
+        //[ForeignKey("PartOrderId")]
         public PartOrder PartOrder { get; set; }
 
 

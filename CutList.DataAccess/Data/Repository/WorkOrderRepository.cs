@@ -23,19 +23,19 @@ namespace CutList.DataAccess.Data.Repository
         //to populate my dropdown
         public IEnumerable<SelectListItem> GetWorkOrderListForDropDown()
         {
-            return _db.WorkOrder.Select(w => new SelectListItem()
+            return _db.WorkOrders.Select(w => new SelectListItem()
             {
-                Text = w.WON.ToString(),
-                Value = w.WON.ToString()
+                Text = w.WorkOrderId.ToString(),
+                Value = w.WorkOrderId.ToString()
             });
         }
 
         public void Update(WorkOrder workOrder)
         {
-            var objectFromDb = _db.WorkOrder.FirstOrDefault(w => w.WON == workOrder.WON);
+            var objectFromDb = _db.WorkOrders.FirstOrDefault(w => w.WorkOrderId == workOrder.WorkOrderId);
 
             //make a new versionDate object???
-            objectFromDb.RequiredDate = workOrder.RequiredDate;
+            //objectFromDb.RequiredDate = workOrder.RequiredDate;
             //from ApplicationUser
             //objectFromDb.ApprovalEngineer = workOrder.ApprovalEngineer;
             //objectFromDb.CheckedByEngineer = workOrder.CheckedByEngineer;
@@ -112,7 +112,7 @@ namespace CutList.DataAccess.Data.Repository
         public void ChangeWorkOrderStatus(int wON, string approvalStatus)
         {
             //aproval status will come from string options in Utility.StaticDetails
-            var orderFromDb = _db.WorkOrder.FirstOrDefault(w => w.WON == wON);
+            var orderFromDb = _db.WorkOrders.FirstOrDefault(w => w.WorkOrderId == wON);
             orderFromDb.ApprovalStatus = approvalStatus;
             //MIGHT BE ABLE TO SET PERSOn WITH THIS
             //objectFromDb.ApprovalEngineer = (ClaimsIdentity)this.ApplicationUser.Identity;

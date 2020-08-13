@@ -22,7 +22,7 @@ namespace CutList.DataAccess.Data.Repository
         //to populate my dropdown
         public IEnumerable<SelectListItem> GetTaskListForDropDown()
         {
-            return _db.Task.Select(t => new SelectListItem()
+            return _db.Tasks.Select(t => new SelectListItem()
             {
                 Text = t.TaskName.ToString() + " - " + t.TaskId,
                 Value = t.TaskId.ToString()

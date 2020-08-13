@@ -17,13 +17,13 @@ namespace CutList.DataAccess.Data
         }
 
         //put models in DbSet to use in accessing database
-        public DbSet<Project> Project { get; set; }
-        public DbSet<WorkOrder> WorkOrder { get; set; }
-        public DbSet<PartOrder> PartOrder { get; set; }
-        public DbSet<CutListCheck> CutListCheck { get; set; }
-        public DbSet<Task> Task { get; set; }
-        public DbSet<DeliveryDetail> DeliveryDetail { get; set; }
-        public DbSet<VersionDate> VersionDate { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<WorkOrder> WorkOrders { get; set; }
+        public DbSet<PartOrder> PartOrders { get; set; }
+        public DbSet<CutListCheck> CutListChecks { get; set; }
+        public DbSet<Task> Tasks { get; set; }
+        public DbSet<DeliveryDetail> DeliveryDetails { get; set; }
+        public DbSet<VersionDate> VersionDates { get; set; }
 
     }
 }

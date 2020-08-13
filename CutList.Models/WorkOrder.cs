@@ -13,10 +13,10 @@ namespace CutList.Models
     public class WorkOrder
     {
         [Key]
-        public int WON { get; set; }        //this will auto increment???
+        public int WorkOrderId { get; set; }        //this will auto increment???
 
-        [Required]
-        public VersionDate RequiredDate { get; set; }
+        //[Required]
+        //public VersionDate RequiredDate { get; set; }
         ////Use this code in the controller to ensure date is after todays date
         // if (jobApplication.DOB > DateTime.Now)
         //ModelState.AddModelError(nameof(jobApplication.DOB), "Date of Birth cannot be in the future");
@@ -54,16 +54,16 @@ namespace CutList.Models
 
 
         //---------------Foreign Keys and Navigation--------------------
-        public int ProjectId;
-        [ForeignKey("ProjectId")]
+        public int ProjectId { get; set; }
+        //[ForeignKey("ProjectId")]
         public Project Project { get; set; }
 
         //PartOrder
         //public int OrderNo { get; set; }
         //[ForeignKey("OrderNo")]
-        public ICollection<PartOrder> PartOrder { get; set; }
+        public ICollection<PartOrder> PartOrders { get; set; }
 
-        public ICollection<VersionDate> VersionDate { get; set; }
+        public ICollection<VersionDate> VersionDates { get; set; }
 
     }
 }

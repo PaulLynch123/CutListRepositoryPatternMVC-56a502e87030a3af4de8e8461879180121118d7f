@@ -1,4 +1,5 @@
 ﻿using CutList.DataAccess.Data.Repository.IRepository;
+using CutList.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,6 +15,8 @@ namespace CutList.DataAccess.Data.Repository
         {
             _db = db;
 
+            Project = new ProjectRepository(_db);
+
             //Job = new JobRepository(_db);
             ////create the repository object for each model accessing database
             //Frequency = new FrequencyRepository(_db);
@@ -27,16 +30,13 @@ namespace CutList.DataAccess.Data.Repository
 
         }
 
+        public IProjectRepository Project { get; private set; }         //can only be set here
+
         //public IJobRepository Job { get; private set; }         //can only be set here
-
         //public IFrequencyRepository Frequency { get; private set; }
-
         //public IServiceRepository Service { get; private set; }
-
         //public IOrderHeaderRepository OrderHeader { get; private set; }
-
         //public IOrderDetailsRepository OrderDetails { get; private set; }
-
         //user
         //public IUserRepository User { get; private set; }
 

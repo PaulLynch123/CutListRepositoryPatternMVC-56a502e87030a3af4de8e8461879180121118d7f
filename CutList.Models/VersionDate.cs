@@ -9,7 +9,7 @@ namespace CutList.Models
     public class VersionDate
     {
         [Key]
-        public int DateId { get; set; }
+        public int VersionDateId { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime DateEntered { get; set; }
@@ -20,14 +20,12 @@ namespace CutList.Models
         //public ApplicationUser SignedIn { get; set; }   //create ApplicationUser from IdentityUser
         public DateTime SystemDateTime { get; set; }
 
-
-
-
         //---------Foreign keys and Navigation-----------
 
-        //PartOrder
-        public int WON { get; set; }
-        [ForeignKey("WON")]
+        
+        public int WorkOrderId { get; set; }
+
+        //[ForeignKey("WorkOrderId")]
         public WorkOrder WorkOrder { get; set; }
 
 

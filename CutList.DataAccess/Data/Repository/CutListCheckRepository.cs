@@ -31,7 +31,7 @@ namespace CutList.DataAccess.Data.Repository
 
         public void Update(CutListCheck CutListCheck)
         {
-            var objectFromDb = _db.CutListCheck.FirstOrDefault(c => c.CutListCheckId == CutListCheck.CutListCheckId);
+            var objectFromDb = _db.CutListChecks.FirstOrDefault(c => c.CutListCheckId == CutListCheck.CutListCheckId);
 
             objectFromDb.DateEntered = CutListCheck.DateEntered;
             objectFromDb.Bend = CutListCheck.Bend;
