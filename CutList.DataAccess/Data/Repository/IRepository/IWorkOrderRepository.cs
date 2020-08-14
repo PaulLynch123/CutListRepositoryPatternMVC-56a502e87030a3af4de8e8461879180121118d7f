@@ -17,6 +17,6 @@ namespace CutList.DataAccess.Data.Repository.IRepository
         IEnumerable<SelectListItem> GetWorkOrderListForDropDown();
 
         //update approval status only
-        public void ChangeWorkOrderStatus(int wON, string approvalStatus);
+        public void ChangeWorkOrderStatus(int workOrderId, string approvalStatus);
     }
 }

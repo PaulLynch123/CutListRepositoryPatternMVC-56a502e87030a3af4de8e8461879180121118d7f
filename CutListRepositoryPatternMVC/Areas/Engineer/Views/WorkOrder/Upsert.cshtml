@@ -1,0 +1,134 @@
+﻿@model CutList.Models.ViewModels.WorkOrderViewModel
+
+@{
+    ViewData["Title"] = "Upsert";
+    var title = "Work Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@title</h1>
+
+<form method="post" asp-action="Upsert">
+
+    <div class="row px-2 mx-2 backgroundWhite border p-2">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+        <!-- if editing -->
+        @if (Model.WorkOrder.WorkOrderId != 0)
+        {
+            <input type="hidden" asp-for="WorkOrder.WorkOrderId" />
+            //change title if editing
+            title = "Edit " + @title;
+        }
+        else
+        {
+            //<input type="hidden" asp-for="ProjectId" />
+            //change title if creating
+            title = "Create " + @title;
+        }
+
+        <div class="col-12">
+            <!-- dynamic title of page -->
+            <h2 class="text-primary">@title</h2>
+            <br />
+        </div>
+
+
+        <div class="col-8 offset-1">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="WorkOrder.ProjectId"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="WorkOrder.ProjectId" asp-items="Model.ProjectsList" class="form-control">
+                        <option value="" disabled selected>Choose related project..</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 offset-1">
+            <div class="form-group row">
+                <div class="col-4">
+                    <input type="checkbox" asp-for="WorkOrder.HeatSink" class="form-control" />@Html.LabelFor(model => model.WorkOrder.HeatSink)
+                    <span asp-validation-for="WorkOrder.HeatSink" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 offset-1">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="WorkOrder.SilverLabel"></label>
+                </div>
+                <div class="col-1">
+                    <input type="checkbox" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 offset-1">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="WorkOrder.PhaseLabel"></label>
+                </div>
+                <div class="col-1">
+                    <input type="checkbox" class="form-control" />
+
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="WorkOrder.Tinned" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Default checkbox
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-6 offset-1">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="WorkOrder.SpecialPhase"></label>
+                </div>
+                <div class="col-1">
+                    <input type="checkbox" asp-for="WorkOrder.SpecialPhase" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-8 offset-1">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="WorkOrder.JobNotes"></label>
+                </div>
+                <div class="col-8">
+                    <textarea asp-for="WorkOrder.JobNotes" class="form-control"></textarea>
+                    <span asp-validation-for="WorkOrder.JobNotes" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <!-- buttons -->
+        <div class="col-8 offset-1">
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    @if (Model.WorkOrder.ProjectId != 0)
+                    {
+                        //edit button and back to list
+                        <partial name="_EditAndBackToListButton" model="Model.WorkOrder.WorkOrderId" />
+
+                    }
+                    else
+                    {
+                        //create button and back to list
+                        <partial name="_CreateAndBackToListButton" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -12,12 +12,16 @@ namespace CutList.Models
         public int VersionDateId { get; set; }
 
         [DataType(DataType.Date)]
+        [Display(Name = "Date inputed")]
         public DateTime DateEntered { get; set; }
 
+        [Display(Name = "Current Version of Date")]
         public bool CurrentDate { get; set; }
 
+        [Display(Name = "Employee signed in")]
         public string SignedIn { get; set; }
         //public ApplicationUser SignedIn { get; set; }   //create ApplicationUser from IdentityUser
+        [Display(Name = "System Date/Time")]
         public DateTime SystemDateTime { get; set; }
 
         //---------Foreign keys and Navigation-----------
@@ -29,9 +33,9 @@ namespace CutList.Models
         public WorkOrder WorkOrder { get; set; }
 
 
-        //public int CutListId;
-        //[ForeignKey("CutListId")]
-        //public CutListCheck CutListCheck { get; set; }
+        public int CutListCheckId;
+        //[ForeignKey("CutListCheckId")]
+        public CutListCheck CutListCheck { get; set; }
 
         ////PartOrder
         //public int OrderNo { get; set; }

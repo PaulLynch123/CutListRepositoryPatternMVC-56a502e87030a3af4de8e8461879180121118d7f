@@ -1,7 +1,8 @@
-﻿@model CutList.Models.Project
+﻿
+@model CutList.Models.WorkOrder
 
 @{
-    ViewData["Title"] = "Project";
+    ViewData["Title"] = "Work Order";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -19,7 +20,7 @@
             <!-- update and insert is Upsert -->
             <a asp-action="Upsert" class="btn btn-primary">
                 <!-- fontAwesome icon  https://fontawesome.com/icons?d=gallery&m=free -->
-                <i class="fas fa-plus"></i>&nbsp;&nbsp;Create New Project 123
+                <i class="fas fa-plus"></i>&nbsp;&nbsp;Create New @ViewData["Title"] 123
             </a>
         </div>
     </div>
@@ -29,10 +30,11 @@
     <table id="tblData" class="table table-striped table-boarded" style="width:100%">
         <thead>
             <tr>
+                <th>@Html.LabelFor(model => model.WorkOrderId)</th>
+                <th>@Html.LabelFor(model => model.Project.ProjectName)</th>
                 <th>@Html.LabelFor(model => model.ProjectId)</th>
-                <th>@Html.LabelFor(model => model.ProjectName)</th>
-                <th>@Html.LabelFor(model => model.ClientName)</th>
-                <th>@Html.LabelFor(model => model.LeadEngineerString)</th>
+                <th>@Html.LabelFor(model => model.JobNotes)</th>
+                <th>@Html.LabelFor(model => model.ApprovalEngineerString)</th>
                 <!-- table header for edit and delete buttons -->
                 <th></th>
             </tr>
@@ -42,7 +44,5 @@
 
 <!-- add JavaScript scripts -->
 @section Scripts{
-    <script src="~/js/projects.js"></script>
+    <script src="~/js/workOrder.js"></script>
 }
-
-

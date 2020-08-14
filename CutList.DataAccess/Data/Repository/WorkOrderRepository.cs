@@ -109,10 +109,10 @@ namespace CutList.DataAccess.Data.Repository
         }//update()
 
         //use to change status only
-        public void ChangeWorkOrderStatus(int wON, string approvalStatus)
+        public void ChangeWorkOrderStatus(int workOrderId, string approvalStatus)
         {
             //aproval status will come from string options in Utility.StaticDetails
-            var orderFromDb = _db.WorkOrders.FirstOrDefault(w => w.WorkOrderId == wON);
+            var orderFromDb = _db.WorkOrders.FirstOrDefault(w => w.WorkOrderId == workOrderId);
             orderFromDb.ApprovalStatus = approvalStatus;
             //MIGHT BE ABLE TO SET PERSOn WITH THIS
             //objectFromDb.ApprovalEngineer = (ClaimsIdentity)this.ApplicationUser.Identity;

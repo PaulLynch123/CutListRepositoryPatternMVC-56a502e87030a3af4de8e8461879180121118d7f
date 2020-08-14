@@ -22,6 +22,7 @@ namespace CutList.Models
         public Task Paint { get; set; }
         public Task Tinned { get; set; }
         public Task Wrapped { get; set; }
+        [Display(Name = "Mould Cut")]
         public Task MouldCut { get; set; }
         public Task Pour { get; set; }
         public Task Assy { get; set; }
@@ -35,6 +36,6 @@ namespace CutList.Models
 
 
         //public ICollection<Task> Task { get; set; }
-        //public ICollection<VersionDate> VersionDate { get; set; }
+        public ICollection<VersionDate> VersionDates { get; set; }
     }
 }

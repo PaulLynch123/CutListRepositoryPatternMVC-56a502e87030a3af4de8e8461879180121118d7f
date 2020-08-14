@@ -16,6 +16,7 @@ namespace CutList.DataAccess.Data.Repository
             _db = db;
 
             Project = new ProjectRepository(_db);
+            WorkOrder = new WorkOrderRepository(_db);
 
             //Job = new JobRepository(_db);
             ////create the repository object for each model accessing database
@@ -31,6 +32,7 @@ namespace CutList.DataAccess.Data.Repository
         }
 
         public IProjectRepository Project { get; private set; }         //can only be set here
+        public IWorkOrderRepository WorkOrder { get; private set; }
 
         //public IJobRepository Job { get; private set; }         //can only be set here
         //public IFrequencyRepository Frequency { get; private set; }

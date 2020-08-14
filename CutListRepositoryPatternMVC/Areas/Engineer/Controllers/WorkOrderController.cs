@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CutList.DataAccess.Data.Repository.IRepository;
 using CutList.Models;
+using CutList.Models.ViewModels;
 using CutList.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,11 +15,17 @@ namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
     //[Authorize]
     //url path / folder
     [Area("Engineer")]
-    public class ProjectController : Controller
+    public class WorkOrderController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public ProjectController(IUnitOfWork unitOfWork)
+
+        //binding the viewModel automatically for the class
+        [BindProperty]
+        public WorkOrderViewModel WorkOrderVM { get; set; }
+
+
+        public WorkOrderController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -32,46 +39,57 @@ namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
         //insert or update
         public IActionResult Upsert(int? id)    //nullable
         {
-            Project project = new Project();
-            //if it is an insert function
-            if (id == null)
+            //create viewmodel to pass info
+            //removed the WorkOrderViewModel as is Binded already for the whole class an created above
+            WorkOrderVM = new WorkOrderViewModel()
             {
-                //empty object
-                return View(project);
+                WorkOrder = new WorkOrder(),
+                ProjectsList = _unitOfWork.Project.GetProjectListForDropDown(),
+            };
+
+            //editing workOrder
+            if(id != null)
+            {
+                //retrieve workOrder from database
+                WorkOrderVM.WorkOrder = _unitOfWork.WorkOrder.Get(id.GetValueOrDefault());     //used as it is nullable <T> or value of id
             }
-            project = _unitOfWork.Project.Get(id.GetValueOrDefault());     //used as it is nullable <T> or value of id
+            
             //id is not correct
-            if (project == null)
+            if (WorkOrderVM.WorkOrder == null)
             {
                 //DECIDE WHERE TO GO WHEN NOT FOUND
                 return NotFound();
             }
-            return View(project);
+            return View(WorkOrderVM);
         }//Upsert
 
         [HttpPost]
         //to prevent malicious data being sent to the database. treats tampered validation token as spam request
         [ValidateAntiForgeryToken]
-        //pass object in as parameter
-        public IActionResult Upsert(Project project)
+        //nO NEED TO PASS WorkOrderVM as is binded for the class
+        public IActionResult Upsert()
         {
+            //EDIT THIS METHOD
+           
             if (ModelState.IsValid)
             {
                 //check if insert
-                if (project.ProjectId == 0)
+                if (WorkOrderVM.WorkOrder.WorkOrderId == 0)
                 {
-                    _unitOfWork.Project.Add(project);
+                    _unitOfWork.WorkOrder.Add(WorkOrderVM.WorkOrder);
                 }
                 else//is update
                 {
-                    _unitOfWork.Project.Update(project);
+                    //retrieve workOrder from database
+                    WorkOrderVM.WorkOrder = _unitOfWork.WorkOrder.Get(WorkOrderVM.WorkOrder.WorkOrderId);
+                    _unitOfWork.WorkOrder.Update(WorkOrderVM.WorkOrder);
                 }
 
                 _unitOfWork.Save();
                 //use nameof with redirects where possible to ensure it exists
                 return RedirectToAction(nameof(Index));
             }
-            return View(project);
+            return View(WorkOrderVM.WorkOrder);
         }//Upsert POST
 
 

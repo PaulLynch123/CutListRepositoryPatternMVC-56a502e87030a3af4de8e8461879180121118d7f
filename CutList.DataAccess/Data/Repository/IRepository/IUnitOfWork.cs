@@ -10,8 +10,7 @@ namespace CutList.DataAccess.Data.Repository.IRepository
     public interface IUnitOfWork : IDisposable
     {
         IProjectRepository Project { get; }         //get only
-
-        //IJobRepository Job { get; }         //get only
+        IWorkOrderRepository WorkOrder { get; }
 
         ////allowing us to get the IFrequencyRepository
         //IFrequencyRepository Frequency { get; }

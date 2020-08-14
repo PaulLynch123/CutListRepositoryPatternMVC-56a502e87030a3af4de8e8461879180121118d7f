@@ -1,7 +1,91 @@
-﻿
+﻿@model CutList.Models.Project
+
 @{
     ViewData["Title"] = "Upsert";
+    var title = "Project";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Upsert</h1>
+    <h1>@title</h1>
 
+<form method="post" asp-action="Upsert">
+
+    <div class="row px-2 mx-2 backgroundWhite border p-2">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+        <!-- if editing -->
+        @if (Model.ProjectId != 0)
+        {
+            <input type="hidden" asp-for="ProjectId" />
+            //change title if editing
+            title = "Edit " + @title;
+        }
+        else
+        {
+            //<input type="hidden" asp-for="ProjectId" />
+            //change title if creating
+            title = "Create " + @title;
+        }
+
+        <div class="col-12">
+            <!-- dynamic title of page -->
+            <h2 class="text-primary">@title</h2>
+            <br />
+        </div>
+        <div class="col-8 offset-1">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ProjectName"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="ProjectName" class="form-control" />
+                    <span asp-validation-for="ProjectName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8 offset-1">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ClientName"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="ClientName" class="form-control" />
+                    <span asp-validation-for="ClientName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8 offset-1">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="LeadEngineerString"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="LeadEngineerString" class="form-control" />
+                    <span asp-validation-for="LeadEngineerString" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <!-- buttons -->
+        <div class="col-8 offset-1">
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    @if (Model.ProjectId != 0)
+                    {
+                        //edit button and back to list
+                        <partial name="_EditAndBackToListButton" model="Model.ProjectId" />
+
+                    }
+                    else
+                    {
+                        //create button and back to list
+                        <partial name="_CreateAndBackToListButton" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

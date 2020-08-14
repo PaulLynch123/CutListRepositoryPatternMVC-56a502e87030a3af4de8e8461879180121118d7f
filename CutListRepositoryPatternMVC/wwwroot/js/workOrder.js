@@ -15,35 +15,36 @@ function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
             //path to method FORMAT area/controller/method
-            "url": "/engineer/project/GetAll",
+            "url": "/engineer/workOrder/GetAll",
             "type": "GET",
             "datatype": "json"
         },
         //info from the model
         //in an array
         "columns": [
-            { "data": "projectId", "width": "10%" },
-            { "data": "projectName", "width": "20%" },
-            { "data": "clientName", "width": "20%" },
-            { "data": "leadEngineerString", "width": "20%" },
+            { "data": "workOrderId", "width": "10%" },
+            { "data": "project.projectName", "width": "15%" },
+            { "data": "project.projectId", "width": "10%" },
+            { "data": "jobNotes", "width": "20%" },
+            { "data": "approvalEngineerString", "width": "20%" },
             //editing and deleteing info
             {
-                "data": "projectId",
+                "data": "workOrderId",
                 "render": function (data) {
                     //tidl notation for string... inside which I have css html using font awesome icons
                     //edit is href but Delete is onClick calling JS function Delete passing param of path to API
                     return `
                             <div class="text-center">
-                                <a href="/Engineer/Project/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;'>
+                                <a href="/Engineer/WorkOrder/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;'>
                                     <i class='fas fa-edit'></i> Edit
                                 </a>
                                 &nbsp;
-                                <a onclick=Delete("/Engineer/Project/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer; width:100px;'>
+                                <a onclick=Delete("/Engineer/WorkOrder/Delete/${data}") class='btn btn-danger text-white' style='cursor:pointer; width:100px;'>
                                     <i class='fas fa-trash-alt'></i> Delete
                                 </a>
                             </div>
                             `;
-                }, "width": "30%"
+                }, "width": "25%"
             }
         ],
         //no records exist

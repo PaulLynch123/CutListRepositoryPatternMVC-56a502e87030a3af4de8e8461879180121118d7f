@@ -17,20 +17,26 @@ namespace CutList.Models
 
         //public int PartId { get; set; }
         [Required(ErrorMessage ="You have to enter the {0} the busbar is made from")]
+        [Display(Name = "Busbar Material")]
         public Material Material{ get; set; }
 
+        [Display(Name = "Bar Stack")]
         public Stack Stack { get; set; }
 
         [Required]
         [Range(1,20, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int Quantity { get; set; }
 
+        [Display(Name = "Earth Warning")]
         public bool EarthWarning { get; set; }
+        [Display(Name = "Earth Size")]
         public int EarthSize { get; set; }          //must be more than Amps in WorkOrder
 
         [DisplayFormat(NullDisplayText = "No colour")]
+        [Display(Name = "JS Cover Colour")]
         public CoverColour? JSCoverColour { get; set; }         //null is better so I can check if null later
         [DisplayFormat(NullDisplayText = "No colour")]
+        [Display(Name = "JSP Cover Colour")]
         public CoverColour? JSPCoverColour { get; set; }         //null is better so I can check if null later
 
 
