@@ -19,6 +19,7 @@ using CutList.DataAccess.Data;
 using CutList.DataAccess.Data.Repository.IRepository;
 using CutList.DataAccess.Data.Repository;
 using CutList.DataAccess.Initializer;
+using CutList.DataAccess.Seeders;
 
 namespace CutListRepositoryPatternMVC
 {
@@ -52,8 +53,11 @@ namespace CutListRepositoryPatternMVC
             //add unitOfWork
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            //Add my Initialiser (seeding data, creating and deleting)
+            //Add my Initialiser (seeding live environment data, creating and deleting)
             services.AddScoped<IDbInitialiser, DbInitialiser>();
+
+            //Add my data seeder (seeding test data)
+            services.AddScoped<IProjectDataSeeder, ProjectDataSeeder>();
 
             //I have included RazorRuntimeCOmplication neGet package (MVC)
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
@@ -62,12 +66,17 @@ namespace CutListRepositoryPatternMVC
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         //Middleware pipeline for request and response (context pipeline1 then pipeline2 etc response or 404 no response. Context Object goes back)
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitialiser paulsInitialiser)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitialiser paulsInitialiser, IProjectDataSeeder paulsDataSeeder)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+
+                //Add seeder data to development only
+                //will this work?
+                paulsInitialiser.DevelopmentInitialise();
+                paulsDataSeeder.Seed();
             }
             else
             {

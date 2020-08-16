@@ -6,7 +6,9 @@ namespace CutList.DataAccess.Initializer
 {
     public interface IDbInitialiser
     {
-        //start and seed data
+        //start and seed deployment data
         void Initialise();
+
+        void DevelopmentInitialise();
     }
 }
