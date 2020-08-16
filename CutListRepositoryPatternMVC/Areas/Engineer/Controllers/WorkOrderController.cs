@@ -100,7 +100,7 @@ namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
         {
             //pass the Json object
             //use the GetAll method in the Interface
-            return Json(new { data = _unitOfWork.Project.GetAll() });
+            return Json(new { data = _unitOfWork.WorkOrder.GetAll() });
 
             //stored procedure accessed via stored procedure repositary
             //use returnList method<returning job type> (pass stored rocedure name, no more parameteres)
@@ -110,14 +110,14 @@ namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var objectFromDb = _unitOfWork.Project.Get(id);
+            var objectFromDb = _unitOfWork.WorkOrder.Get(id);
             if (objectFromDb == null)
             {
                 //when success equals false the error message below is shown
                 return Json(new { success = false, message = "An Error has occured when deleting" });
             }
             //put to the database
-            _unitOfWork.Project.Remove(objectFromDb);
+            _unitOfWork.WorkOrder.Remove(objectFromDb);
             _unitOfWork.Save();
             //when success equals true the completed message below is shown
             return Json(new { success = true, message = "Delete successful" });

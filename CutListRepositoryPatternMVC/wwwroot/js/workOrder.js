@@ -24,7 +24,7 @@ function loadDataTable() {
         "columns": [
             { "data": "workOrderId", "width": "10%" },
             { "data": "project.projectName", "width": "15%" },
-            { "data": "project.projectId", "width": "10%" },
+            { "data": "projectId", "width": "10%" },
             { "data": "jobNotes", "width": "20%" },
             { "data": "approvalEngineerString", "width": "20%" },
             //editing and deleteing info
