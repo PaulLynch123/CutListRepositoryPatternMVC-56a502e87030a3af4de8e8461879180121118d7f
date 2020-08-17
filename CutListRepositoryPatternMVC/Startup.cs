@@ -60,7 +60,8 @@ namespace CutListRepositoryPatternMVC
             services.AddScoped<IProjectDataSeeder, ProjectDataSeeder>();
 
             //I have included RazorRuntimeCOmplication neGet package (MVC)
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            //.AddNewtonsoftJson() for calling APIs use this Json object
+            services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
             services.AddRazorPages();
         }
 
@@ -74,7 +75,6 @@ namespace CutListRepositoryPatternMVC
                 app.UseDatabaseErrorPage();
 
                 //Add seeder data to development only
-                //will this work?
                 paulsInitialiser.DevelopmentInitialise();
                 paulsDataSeeder.Seed();
             }
@@ -92,7 +92,7 @@ namespace CutListRepositoryPatternMVC
 
 
             //Add my initialise method
-            paulsInitialiser.Initialise();
+            //paulsInitialiser.Initialise();
 
             app.UseAuthentication();
             app.UseAuthorization();

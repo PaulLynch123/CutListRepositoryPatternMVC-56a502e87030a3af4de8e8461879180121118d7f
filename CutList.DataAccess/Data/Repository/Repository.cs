@@ -44,7 +44,7 @@ namespace CutList.DataAccess.Data.Repository
             {
                 query = query.Where(filter);
             }
-            //SEARCH (Comma seperated to allow for multiple individual seraches together) --eager loading--
+            //--eager loading--
             if (includeProperties != null)
             {
                 //remove empty entries, seperate by comma, then add each to the query one by one

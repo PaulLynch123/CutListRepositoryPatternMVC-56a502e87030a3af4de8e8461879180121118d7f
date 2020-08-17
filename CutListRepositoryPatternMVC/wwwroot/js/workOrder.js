@@ -35,7 +35,7 @@ function loadDataTable() {
                     //edit is href but Delete is onClick calling JS function Delete passing param of path to API
                     return `
                             <div class="text-center">
-                                <a href="/Engineer/WorkOrder/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;'>
+                                <a href="/Engineer/workOrder/Upsert/${data}" class='btn btn-success text-white' style='cursor:pointer; width:100px;'>
                                     <i class='fas fa-edit'></i> Edit
                                 </a>
                                 &nbsp;

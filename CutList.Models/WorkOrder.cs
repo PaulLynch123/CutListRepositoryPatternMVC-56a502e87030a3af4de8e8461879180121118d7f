@@ -70,6 +70,7 @@ namespace CutList.Models
 
 
         //---------------Foreign Keys and Navigation--------------------
+        [Required]
         public int ProjectId { get; set; }
         //[ForeignKey("ProjectId")]
         public Project Project { get; set; }

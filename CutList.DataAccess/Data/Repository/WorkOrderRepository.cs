@@ -40,6 +40,9 @@ namespace CutList.DataAccess.Data.Repository
             //objectFromDb.ApprovalEngineer = workOrder.ApprovalEngineer;
             //objectFromDb.CheckedByEngineer = workOrder.CheckedByEngineer;
 
+            //update the project ID
+            objectFromDb.ProjectId = workOrder.ProjectId;
+
             objectFromDb.JobNotes = workOrder.JobNotes;
             objectFromDb.HeatSink = workOrder.HeatSink;
             objectFromDb.SilverLabel = workOrder.SilverLabel;

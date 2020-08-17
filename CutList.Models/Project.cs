@@ -30,7 +30,7 @@ namespace CutList.Models
 
         //navigation
         //public int WON { get; set; }
-        public ICollection<WorkOrder> WorkOrders { get; set; }
+        //public ICollection<WorkOrder> WorkOrders { get; set; }
         
         
     }

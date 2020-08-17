@@ -80,8 +80,7 @@ namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
                 }
                 else//is update
                 {
-                    //retrieve workOrder from database
-                    WorkOrderVM.WorkOrder = _unitOfWork.WorkOrder.Get(WorkOrderVM.WorkOrder.WorkOrderId);
+                    //update database with udate method in WorkOrderRepository
                     _unitOfWork.WorkOrder.Update(WorkOrderVM.WorkOrder);
                 }
 
@@ -89,19 +88,27 @@ namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
                 //use nameof with redirects where possible to ensure it exists
                 return RedirectToAction(nameof(Index));
             }
-            return View(WorkOrderVM.WorkOrder);
+            else
+            {
+                //need to fill list incase noot valid
+                WorkOrderVM.ProjectsList = _unitOfWork.Project.GetProjectListForDropDown();
+                //return viewModel again
+                return View(WorkOrderVM);
+            }
+            
         }//Upsert POST
 
 
-        #region API calls ---------
+        #region API calls
 
-        [HttpGet]
+        //[HttpGet]
         public IActionResult GetAll()
         {
             //pass the Json object
-            //use the GetAll method in the Interface
-            return Json(new { data = _unitOfWork.WorkOrder.GetAll() });
-
+            //use the GetAll method in the Repository
+            //include the project so I can show project ID in the table
+            return Json(new { data = _unitOfWork.WorkOrder.GetAll(includeProperties: "Project") });
+            
             //stored procedure accessed via stored procedure repositary
             //use returnList method<returning job type> (pass stored rocedure name, no more parameteres)
             //return Json(new { data = _unitOfWork.SP_Call.ReturnList<Job>(StaticDetails.cutStoredProcedure_GetAllJob, null) });

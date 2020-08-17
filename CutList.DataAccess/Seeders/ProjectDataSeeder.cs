@@ -47,13 +47,14 @@ namespace CutList.DataAccess.Seeders
             }//for
             _db.SaveChanges();
 
-            
-                _db.Add(new WorkOrder
+            for(int j=1; j<=7; j++)
+            {
+                var object1 = _db.Add(new WorkOrder
                 {
                     ApprovalStatus = StaticDetails.StatusSubmitted,
-                    ApprovalEngineerString = "Approval Engineer String",
-                    CheckedByEngineerString = "Checked By Engineer",
-                    JobNotes = "Job Notes with some more notes here",
+                    ApprovalEngineerString = "Approval Engineer String" + j.ToString(),
+                    CheckedByEngineerString = "Checked By Engineer" + j.ToString(),
+                    JobNotes = "Job Notes with some more notes here" + j.ToString(),
                     HeatSink = false,
                     SilverLabel = CutListEnums.SilverLabel.SilverLabel1,
                     PhaseLabel = CutListEnums.PhaseLabel.EuroAlternative,
@@ -63,13 +64,16 @@ namespace CutList.DataAccess.Seeders
                     BarAmps = 1000,
                     AmpValue = CutListEnums.AmpValues.FourHundred,
                     //need to set dependent foreign key
-                    ProjectId = 2
-                    
+                    //Half of projectId different
+                    ProjectId = (0 == (j % 2)) ? 1 : 2
 
                 }
-                    );
-            
-            
+
+                    ) ;
+                
+
+            }//for
+                
             _db.SaveChanges();
         }//See
         
