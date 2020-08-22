@@ -9,21 +9,21 @@ namespace CutList.Utility
     {
         public enum PhaseLabel
         {
-            //0
+            //set from one instead of zero to allow for help text on
             //brown (L1), black (L2), grey (L3) and blue (neutral)
             [Display(Name = "Euro Standard")]
-            EuroStandard,
+            EuroStandard = 1,
             //1
             //green (L1), red (L2), yellow (L3) and blue (neutral)
             [Display (Name = "Euro Alternative")]
-            EuroAlternative,
+            EuroAlternative = 2,
             //2
             //red (L1), yellow (L2), blue (L3) and black (neutral)
-            India,
+            India = 3,
             //3
             //black (L1), brown (L2), blue (L3) and grey (neutral)
             [Display(Name = "North America")]
-            NorthAmerica
+            NorthAmerica = 4
         }
 
         public enum WireColours
@@ -96,35 +96,35 @@ namespace CutList.Utility
 
         public enum Material
         {
-            Copper,
-            Aluminium,
-            Iron
+            Copper = 1,
+            Aluminium = 2,
+            Iron = 3
         }
 
         public enum Stack
         {
-            Single,
-            Double
+            Single = 1,
+            Double = 2
         }
 
         public enum CoverColour
         {
-            Blue,
-            Red,
-            Green,
-            Yellow,
+            Blue = 1,
+            Red = 2,
+            Green = 3,
+            Yellow = 4,
             [Display(Name = "Other... see notes")]
-            Other
+            Other = 5
         }
 
 
         public enum SilverLabel
         {
-            SilverLabel1,
-            SilverLabel2,
-            SilverLabel3,
+            SilverLabel1 = 1,
+            SilverLabel2 = 2,
+            SilverLabel3 = 3,
             [Display(Name = "Other... see notes")]
-            Other
+            Other = 4
         }
     }
 }

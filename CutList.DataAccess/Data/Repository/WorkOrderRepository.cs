@@ -50,7 +50,7 @@ namespace CutList.DataAccess.Data.Repository
             objectFromDb.SpecialPhase = workOrder.SpecialPhase;
 
             //if special phase wiring colours then set as per form
-            if (workOrder.SpecialPhase == false)
+            if (workOrder.SpecialPhase == true)
             {
                 objectFromDb.Neutral = workOrder.Neutral;
                 objectFromDb.L1 = workOrder.L1;
