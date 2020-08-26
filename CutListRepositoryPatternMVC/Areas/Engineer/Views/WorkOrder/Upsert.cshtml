@@ -49,6 +49,19 @@
             </div>
         </div>
 
+        <!-- date -->
+        <div class="col-8 offset-1">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="WorkOrder.VersionDates.FirstOrDefault(v => v.WorkOrderId == Model.WorkOrder.WorkOrderId).DateEntered" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="VersionDatesList." class="form-control" />
+                    <span asp-validation-for="WorkOrder.BarAmps" class="test-danger"></span>
+                </div>
+            </div>
+        </div>
+
         <!-- boolean toggles -->
         <div class="col-12 offset-1 pb-3">
             @*<div class="form-group row">*@
@@ -170,10 +183,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
 
 
         @*<div class="custom-control custom-switch">

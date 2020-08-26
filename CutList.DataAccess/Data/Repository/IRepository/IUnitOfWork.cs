@@ -12,6 +12,8 @@ namespace CutList.DataAccess.Data.Repository.IRepository
         IProjectRepository Project { get; }         //get only
         IWorkOrderRepository WorkOrder { get; }
 
+        IVersionDateRepository VersionDate { get; }
+
         ////allowing us to get the IFrequencyRepository
         //IFrequencyRepository Frequency { get; }
         //IServiceRepository Service { get; }

@@ -29,7 +29,7 @@ namespace CutList.DataAccess.Data.Repository
             dbSet.Add(entity);
         }
 
-        //add by model object id
+        //by model object id
         public T Get(int id)
         {
             return dbSet.Find(id);

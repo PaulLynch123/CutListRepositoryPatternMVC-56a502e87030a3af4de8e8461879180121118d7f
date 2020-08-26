@@ -14,7 +14,7 @@ namespace CutList.DataAccess.Data.Repository.IRepository
         //void Update(VersionDate versionDate);
 
         //want to render as selectList for version list filtered by workOrder number
-        IEnumerable<SelectListItem> GetVersionDateByWorkOrderForDropDown();
+        IEnumerable<SelectListItem> GetVersionDateByWorkOrderForDropDown(int? id);
 
     }
 }

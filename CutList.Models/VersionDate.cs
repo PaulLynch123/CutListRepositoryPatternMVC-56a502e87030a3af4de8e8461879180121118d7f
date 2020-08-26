@@ -27,13 +27,13 @@ namespace CutList.Models
         //---------Foreign keys and Navigation-----------
 
         
-        public int WorkOrderId { get; set; }
+        public int? WorkOrderId { get; set; }
 
         //[ForeignKey("WorkOrderId")]
         public WorkOrder WorkOrder { get; set; }
 
 
-        public int CutListCheckId;
+        public int? CutListCheckId;
         //[ForeignKey("CutListCheckId")]
         public CutListCheck CutListCheck { get; set; }
 

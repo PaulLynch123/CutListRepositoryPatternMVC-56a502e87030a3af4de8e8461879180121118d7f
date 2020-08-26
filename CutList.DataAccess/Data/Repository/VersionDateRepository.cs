@@ -19,16 +19,18 @@ namespace CutList.DataAccess.Data.Repository
             _db = db;
         }
 
-        //to populate my dropdown
-        public IEnumerable<SelectListItem> GetVersionDateByWorkOrderForDropDown()
+        //to populate my dropdown for version of dates with WorkOrderId
+        public IEnumerable<SelectListItem> GetVersionDateByWorkOrderForDropDown(int? foreignId)
         {
-            return _db.VersionDates.Select(vd => new SelectListItem()
+            return _db.VersionDates.Where(vd1 => vd1.WorkOrderId == foreignId).Select(vd => new SelectListItem()
             {
                 Text = vd.VersionDateId.ToString() + " - " + vd.CurrentDate,
                 Value = vd.VersionDateId.ToString()
             });
         }
 
+
+        
         //public void Update(Project project)
         //{
         //    var objectFromDb = _db.Project.FirstOrDefault(p => p.ProjectId == project.ProjectId);

@@ -46,6 +46,9 @@ namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
             {
                 WorkOrder = new WorkOrder(),
                 ProjectsList = _unitOfWork.Project.GetProjectListForDropDown(),
+                //get VersionDate details
+                VersionDatesList = _unitOfWork.VersionDate.GetVersionDateByWorkOrderForDropDown(id),
+                //VersionDatesList = _unitOfWork.VersionDate.GetAll().Where(v => v.WorkOrderId == id),
             };
 
             //editing workOrder
