@@ -44,6 +44,7 @@
                     <select asp-for="WorkOrder.ProjectId" asp-items="Model.ProjectsList" class="form-control" onclick="showWireColours()">
                         <option value="" disabled selected>Choose related project..</option>
                     </select>
+                    <span asp-validation-for="WorkOrder.ProjectId" class="text-danger"></span>
                 </div>
             </div>
         </div>
@@ -98,73 +99,87 @@
         </div>
 
 
-       
 
-            <div class="col-8 offset-1" id="wireColoursN">
-                <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="WorkOrder.Neutral" class="control-label"></label>
-                    </div>
-                    <div class="col-8">
-                        <select asp-for="WorkOrder.Neutral" asp-items="Html.GetEnumSelectList<CutList.Utility.CutListEnums.WireColours>()" class="form-control">
-                            <option value="" disabled selected>Choose ...</option>
-                        </select>
-                        <span asp-validation-for="WorkOrder.Neutral" class="text-danger"></span>
-                    </div>
+
+        <div class="col-8 offset-1" id="wireColoursN">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="WorkOrder.Neutral" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="WorkOrder.Neutral" asp-items="Html.GetEnumSelectList<CutList.Utility.CutListEnums.WireColours>()" class="form-control">
+                        <option value="" disabled selected>Choose ...</option>
+                    </select>
+                    <span asp-validation-for="WorkOrder.Neutral" class="text-danger"></span>
                 </div>
             </div>
+        </div>
 
-            <div class="col-8 offset-1" id="wireColoursL1">
-                <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="WorkOrder.L1" class="control-label"></label>
-                    </div>
-                    <div class="col-8">
-                        <select asp-for="WorkOrder.L1" asp-items="Html.GetEnumSelectList<CutList.Utility.CutListEnums.WireColours>()" class="form-control">
-                            <option value="" disabled selected>Choose ...</option>
-                        </select>
-                        <span asp-validation-for="WorkOrder.L1" class="text-danger"></span>
-                    </div>
+        <div class="col-8 offset-1" id="wireColoursL1">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="WorkOrder.L1" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="WorkOrder.L1" asp-items="Html.GetEnumSelectList<CutList.Utility.CutListEnums.WireColours>()" class="form-control">
+                        <option value="" disabled selected>Choose ...</option>
+                    </select>
+                    <span asp-validation-for="WorkOrder.L1" class="text-danger"></span>
                 </div>
             </div>
+        </div>
 
-            <div class="col-8 offset-1" id="wireColoursL2">
-                <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="WorkOrder.L2" class="control-label"></label>
-                    </div>
-                    <div class="col-8">
-                        <select asp-for="WorkOrder.L2" asp-items="Html.GetEnumSelectList<CutList.Utility.CutListEnums.WireColours>()" class="form-control">
-                            <option value="" disabled selected>Choose ...</option>
-                        </select>
-                        <span asp-validation-for="WorkOrder.L2" class="text-danger"></span>
-                    </div>
+        <div class="col-8 offset-1" id="wireColoursL2">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="WorkOrder.L2" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="WorkOrder.L2" asp-items="Html.GetEnumSelectList<CutList.Utility.CutListEnums.WireColours>()" class="form-control">
+                        <option value="" disabled selected>Choose ...</option>
+                    </select>
+                    <span asp-validation-for="WorkOrder.L2" class="text-danger"></span>
                 </div>
             </div>
+        </div>
 
-            <div class="col-8 offset-1" id="wireColoursL3">
-                <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="WorkOrder.L3" class="control-label"></label>
-                    </div>
-                    <div class="col-8">
-                        <select asp-for="WorkOrder.L3" asp-items="Html.GetEnumSelectList<CutList.Utility.CutListEnums.WireColours>()" class="form-control">
-                            <option value="" disabled selected>Choose ...</option>
-                        </select>
-                        <span asp-validation-for="WorkOrder.L3" class="text-danger"></span>
-                    </div>
+        <div class="col-8 offset-1" id="wireColoursL3">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="WorkOrder.L3" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="WorkOrder.L3" asp-items="Html.GetEnumSelectList<CutList.Utility.CutListEnums.WireColours>()" class="form-control">
+                        <option value="" disabled selected>Choose ...</option>
+                    </select>
+                    <span asp-validation-for="WorkOrder.L3" class="text-danger"></span>
                 </div>
             </div>
+        </div>
 
-       
+        <div class="col-8 offset-1" id="wireColoursEarth">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="WorkOrder.Earth" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="WorkOrder.Earth" asp-items="Html.GetEnumSelectList<CutList.Utility.CutListEnums.WireColours>()" class="form-control">
+                        <option value="" disabled selected>Choose ...</option>
+                    </select>
+                    <span asp-validation-for="WorkOrder.Earth" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+
 
 
 
 
         @*<div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" asp-for="WorkOrder.HeatSink">
-                <label class="custom-control-label" asp-for="WorkOrder.HeatSink"></label>
-            </div>*@
+            <input type="checkbox" class="custom-control-input" asp-for="WorkOrder.HeatSink">
+            <label class="custom-control-label" asp-for="WorkOrder.HeatSink"></label>
+        </div>*@
 
         <!-- amp values -->
         <div class="col-8 offset-1">
@@ -212,7 +227,8 @@
         <div class="col-8 offset-1">
             <div class="form-group row">
                 <div class="col-8 offset-4">
-                    @if (Model.WorkOrder.ProjectId != 0)
+                    <!-- foreign key projectId is int? nullable-->
+                    @if (Model.WorkOrder.ProjectId != null)
                     {
                         //edit button and back to list
                         <partial name="_EditAndBackToListButton" model="Model.WorkOrder.WorkOrderId" />
@@ -245,12 +261,14 @@
                 $(wireColoursL1).show();
                 $(wireColoursL2).show();
                 $(wireColoursL3).show();
+                $(wireColoursEarth).show();
                 $(phaseLabelVisable).hide();
             } else {
                 $(wireColoursN).hide();
                 $(wireColoursL1).hide();
                 $(wireColoursL2).hide();
                 $(wireColoursL3).hide();
+                $(wireColoursEarth).hide();
                 $(phaseLabelVisable).show();
             }
             });
@@ -262,12 +280,14 @@
                 $(wireColoursL1).show();
                 $(wireColoursL2).show();
                 $(wireColoursL3).show();
+                $(wireColoursEarth).show();
                 $(phaseLabelVisable).hide();
             } else {
                 $(wireColoursN).hide();
                 $(wireColoursL1).hide();
                 $(wireColoursL2).hide();
                 $(wireColoursL3).hide();
+                $(wireColoursEarth).hide();
                 $(phaseLabelVisable).show();
             }
         };

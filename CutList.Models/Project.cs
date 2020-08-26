@@ -11,8 +11,9 @@ namespace CutList.Models
     public class Project
     {
         //need to get Project ID from another database
-        [Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
+        [Required(ErrorMessage = "Please select a Project 123")]
         public int ProjectId { get; set; }
 
         [Required]

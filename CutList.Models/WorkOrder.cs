@@ -70,9 +70,11 @@ namespace CutList.Models
 
 
         //---------------Foreign Keys and Navigation--------------------
-        [Required]
-        public int ProjectId { get; set; }
-        //[ForeignKey("ProjectId")]
+        [Required(ErrorMessage = "Please select a project")]
+        [Display(Name = "Project Id")]
+        //nullable so that validation can work for int
+        public int? ProjectId { get; set; }
+        
         public Project Project { get; set; }
 
         //PartOrder

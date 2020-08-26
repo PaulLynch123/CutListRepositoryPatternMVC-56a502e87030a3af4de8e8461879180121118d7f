@@ -49,60 +49,12 @@ namespace CutList.DataAccess.Data.Repository
             objectFromDb.PhaseLabel = workOrder.PhaseLabel;
             objectFromDb.SpecialPhase = workOrder.SpecialPhase;
 
-            //if special phase wiring colours then set as per form
-            if (workOrder.SpecialPhase == true)
-            {
-                objectFromDb.Neutral = workOrder.Neutral;
-                objectFromDb.L1 = workOrder.L1;
-                objectFromDb.L2 = workOrder.L2;
-                objectFromDb.L3 = workOrder.L3;
-                objectFromDb.Earth = workOrder.Earth;
-            }//if
-            else
-            {
-                //else set as per code below depending on PhaseLabel tag
-                if(workOrder.PhaseLabel == Utility.CutListEnums.PhaseLabel.EuroStandard)
-                {
-                    //autoset to EuroStandard
-                    objectFromDb.Neutral = Utility.CutListEnums.WireColours.Blue;
-                    objectFromDb.L1 = Utility.CutListEnums.WireColours.Brown;
-                    objectFromDb.L2 = Utility.CutListEnums.WireColours.Black;
-                    objectFromDb.L3 = Utility.CutListEnums.WireColours.Grey;
-                    objectFromDb.Earth = Utility.CutListEnums.WireColours.YellowGreen;
-                }//if
+            objectFromDb.Neutral = workOrder.Neutral;
+            objectFromDb.L1 = workOrder.L1;
+            objectFromDb.L2 = workOrder.L2;
+            objectFromDb.L3 = workOrder.L3;
+            objectFromDb.Earth = workOrder.Earth;
 
-                if (workOrder.PhaseLabel == Utility.CutListEnums.PhaseLabel.EuroAlternative)
-                {
-                    //autoset depending on 
-                    objectFromDb.Neutral = Utility.CutListEnums.WireColours.Blue;
-                    objectFromDb.L1 = Utility.CutListEnums.WireColours.Green;
-                    objectFromDb.L2 = Utility.CutListEnums.WireColours.Red;
-                    objectFromDb.L3 = Utility.CutListEnums.WireColours.Yellow;
-                    objectFromDb.Earth = Utility.CutListEnums.WireColours.YellowGreen;
-                }//if
-
-                if (workOrder.PhaseLabel == Utility.CutListEnums.PhaseLabel.India)
-                {
-                    //autoset depending on 
-                    objectFromDb.Neutral = Utility.CutListEnums.WireColours.Black;
-                    objectFromDb.L1 = Utility.CutListEnums.WireColours.Red;
-                    objectFromDb.L2 = Utility.CutListEnums.WireColours.Yellow;
-                    objectFromDb.L3 = Utility.CutListEnums.WireColours.Blue;
-                    objectFromDb.Earth = Utility.CutListEnums.WireColours.Green;
-                }//if
-
-                if (workOrder.PhaseLabel == Utility.CutListEnums.PhaseLabel.NorthAmerica)
-                {
-                    //autoset depending on 
-                    objectFromDb.Neutral = Utility.CutListEnums.WireColours.Grey;
-                    objectFromDb.L1 = Utility.CutListEnums.WireColours.Black;
-                    objectFromDb.L2 = Utility.CutListEnums.WireColours.Brown;
-                    objectFromDb.L3 = Utility.CutListEnums.WireColours.Blue;
-                    objectFromDb.Earth = Utility.CutListEnums.WireColours.Green;
-                }//if
-                
-            }//else
-            
             objectFromDb.Tinned = workOrder.Tinned;
             //IF TINNED UPDATE DELIVERY???
             objectFromDb.BarAmps = workOrder.BarAmps;

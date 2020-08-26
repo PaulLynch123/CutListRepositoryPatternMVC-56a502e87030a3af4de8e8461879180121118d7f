@@ -8,6 +8,7 @@ using CutList.Models.ViewModels;
 using CutList.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static CutList.Utility.CutListEnums;
 
 namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
 {
@@ -40,7 +41,7 @@ namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
         public IActionResult Upsert(int? id)    //nullable
         {
             //create viewmodel to pass info
-            //removed the WorkOrderViewModel as is Binded already for the whole class an created above
+            //I removed the WorkOrderViewModel as is Binded already for the whole class an created above
             WorkOrderVM = new WorkOrderViewModel()
             {
                 WorkOrder = new WorkOrder(),
@@ -57,7 +58,7 @@ namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
             //id is not correct
             if (WorkOrderVM.WorkOrder == null)
             {
-                //DECIDE WHERE TO GO WHEN NOT FOUND
+                //DECIDE WHERE TO GO WHEN NOT FOUND AND MESSAGE
                 return NotFound();
             }
             return View(WorkOrderVM);
@@ -69,34 +70,87 @@ namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
         //nO NEED TO PASS WorkOrderVM as is binded for the class
         public IActionResult Upsert()
         {
-            //EDIT THIS METHOD
-           
+           //check if matches model
             if (ModelState.IsValid)
             {
+                //update wireColours
+                WorkOrderVM.WorkOrder = SetWireColoursFromPhaseLabel(WorkOrderVM.WorkOrder);
+
                 //check if insert
                 if (WorkOrderVM.WorkOrder.WorkOrderId == 0)
                 {
                     _unitOfWork.WorkOrder.Add(WorkOrderVM.WorkOrder);
-                }
+                }//if
                 else//is update
                 {
                     //update database with udate method in WorkOrderRepository
                     _unitOfWork.WorkOrder.Update(WorkOrderVM.WorkOrder);
-                }
+                }//else
 
                 _unitOfWork.Save();
                 //use nameof with redirects where possible to ensure it exists
                 return RedirectToAction(nameof(Index));
-            }
+            }//if
             else
             {
-                //need to fill list incase noot valid
+                //need to fill list incase not valid
                 WorkOrderVM.ProjectsList = _unitOfWork.Project.GetProjectListForDropDown();
                 //return viewModel again
                 return View(WorkOrderVM);
-            }
+            }//else
             
         }//Upsert POST
+
+        private WorkOrder SetWireColoursFromPhaseLabel(WorkOrder workOrder)
+        {
+            //if special phase wiring colours false the set else return as per form
+            if (workOrder.SpecialPhase == false)
+            {
+                //else set as per code below depending on PhaseLabel tag
+                if (workOrder.PhaseLabel == PhaseLabel.EuroStandard)
+                {
+                    //autoset to EuroStandard
+                    workOrder.Neutral = WireColours.Blue;
+                    workOrder.L1 = WireColours.Brown;
+                    workOrder.L2 = WireColours.Black;
+                    workOrder.L3 = WireColours.Grey;
+                    workOrder.Earth = WireColours.YellowGreen;
+                }//if
+
+                if (workOrder.PhaseLabel == PhaseLabel.EuroAlternative)
+                {
+                    //autoset depending on 
+                    workOrder.Neutral = WireColours.Blue;
+                    workOrder.L1 = WireColours.Green;
+                    workOrder.L2 = WireColours.Red;
+                    workOrder.L3 = WireColours.Yellow;
+                    workOrder.Earth = WireColours.YellowGreen;
+                }//if
+
+                if (workOrder.PhaseLabel == PhaseLabel.India)
+                {
+                    //autoset depending on 
+                    workOrder.Neutral = WireColours.Black;
+                    workOrder.L1 = WireColours.Red;
+                    workOrder.L2 = WireColours.Yellow;
+                    workOrder.L3 = WireColours.Blue;
+                    workOrder.Earth = WireColours.Green;
+                }//if
+
+                if (workOrder.PhaseLabel == PhaseLabel.NorthAmerica)
+                {
+                    //autoset depending on 
+                    workOrder.Neutral = WireColours.Grey;
+                    workOrder.L1 = WireColours.Black;
+                    workOrder.L2 = WireColours.Brown;
+                    workOrder.L3 = WireColours.Blue;
+                    workOrder.Earth = WireColours.Green;
+                }//if
+
+            }//if
+
+            return workOrder;
+        }
 
 
         #region API calls
