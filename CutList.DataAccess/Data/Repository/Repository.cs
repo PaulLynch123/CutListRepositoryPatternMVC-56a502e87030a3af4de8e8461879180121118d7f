@@ -9,14 +9,15 @@ using System.Text;
 namespace CutList.DataAccess.Data.Repository
 {
     //allowing me to pass models into each repository (where T : class)
+    //see tutorial for details https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
     public class Repository<T> : IRepository<T> where T : class
     {
-        //create the context with deault DBContext class
+        //create the context with default DBContext class
         protected readonly DbContext Context;
         //interal DBSet with the generic class inside it
         internal DbSet<T> dbSet;
 
-        //initialise DbContext with dependency injection
+        //initialise DbContext with dependency injection and initialise dbSet variable
         public Repository(DbContext context)
         {
             Context = context;
@@ -32,10 +33,13 @@ namespace CutList.DataAccess.Data.Repository
         //by model object id
         public T Get(int id)
         {
+            //remember can't do egar loading with 'Find'
             return dbSet.Find(id);
         }
 
         //getAll for DataTables. 
+        //using these parameters will make sure the database does the filtering etc which should be faster
+        //provide lamda expression based on class type which will return boolean.
         public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
         {
             IQueryable<T> query = dbSet;
@@ -83,10 +87,13 @@ namespace CutList.DataAccess.Data.Repository
             return query.FirstOrDefault();
         }
 
+        //delete by id
         public void Remove(int id)
         {
             T entityToRemove = dbSet.Find(id);
             Remove(entityToRemove);
+
+            //THINK ABOUT HANDLING CONCURRENCY WHERE YOU MIGHT NEED TO PASS THE WHOLE ENTITY FOR DELETING
         }
 
         public void Remove(T entity)

@@ -13,7 +13,7 @@ namespace CutList.Models
 
         [DataType(DataType.Date)]
         [Display(Name = "Date inputed")]
-        public DateTime DateEntered { get; set; }
+        public DateTime? DateEntered { get; set; }
 
         [Display(Name = "Current Version of Date")]
         public bool CurrentDate { get; set; }

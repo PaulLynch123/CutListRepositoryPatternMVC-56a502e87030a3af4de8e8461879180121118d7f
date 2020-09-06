@@ -36,7 +36,7 @@ namespace CutList.DataAccess.Data.Repository
         public IProjectRepository Project { get; private set; }         //can only be set here
         public IWorkOrderRepository WorkOrder { get; private set; }
 
-        public IWorkOrderRepository VersionDate { get; private set; }
+        public IVersionDateRepository VersionDate { get; private set; }
 
         //public IJobRepository Job { get; private set; }         //can only be set here
         //public IFrequencyRepository Frequency { get; private set; }

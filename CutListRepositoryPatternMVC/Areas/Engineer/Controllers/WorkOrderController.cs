@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using CutList.DataAccess.Data.Repository.IRepository;
@@ -8,6 +9,7 @@ using CutList.Models.ViewModels;
 using CutList.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using static CutList.Utility.CutListEnums;
 
 namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
@@ -40,30 +42,46 @@ namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
         //insert or update
         public IActionResult Upsert(int? id)    //nullable
         {
+
+            //get version of the related date
+            var versionDateQuery = _unitOfWork.VersionDate.GetAll(filter: vd => vd.WorkOrderId == id && vd.CurrentDate == false, orderBy: vd => vd.OrderBy(d => d.DateEntered));
+
             //create viewmodel to pass info
             //I removed the WorkOrderViewModel as is Binded already for the whole class an created above
             WorkOrderVM = new WorkOrderViewModel()
             {
                 WorkOrder = new WorkOrder(),
+                //using method in ProjectRepository to get
                 ProjectsList = _unitOfWork.Project.GetProjectListForDropDown(),
                 //get VersionDate details
-                VersionDatesList = _unitOfWork.VersionDate.GetVersionDateByWorkOrderForDropDown(id),
-                //VersionDatesList = _unitOfWork.VersionDate.GetAll().Where(v => v.WorkOrderId == id),
+                //VersionDatesList = _unitOfWork.VersionDate.GetVersionDateByWorkOrderForDropDown(id),
+                //new select list with date from query above
+                VersionDatesList = new SelectList(versionDateQuery,"VersionDateId", "DateEntered"),
             };
 
             //editing workOrder
             if(id != null)
             {
                 //retrieve workOrder from database
-                WorkOrderVM.WorkOrder = _unitOfWork.WorkOrder.Get(id.GetValueOrDefault());     //used as it is nullable <T> or value of id
-            }
+                WorkOrderVM.WorkOrder = _unitOfWork.WorkOrder.Get(id.GetValueOrDefault());  //used as it is nullable <T> or value of id
+                //pass entered date back to the form if any found
+                //get current date
+                var currentDateQuery = _unitOfWork.VersionDate.GetAll(filter: vd => vd.WorkOrderId == id && vd.CurrentDate == true);
+                //check the list size
+                var howMany = currentDateQuery.Count();
+                if(howMany > 0)
+                {
+                    WorkOrderVM.VersionDate1 = currentDateQuery.FirstOrDefault().DateEntered;
+                }//if
+                
+            }//if
             
             //id is not correct
             if (WorkOrderVM.WorkOrder == null)
             {
                 //DECIDE WHERE TO GO WHEN NOT FOUND AND MESSAGE
                 return NotFound();
-            }
+            }//if
             return View(WorkOrderVM);
         }//Upsert
 
@@ -82,7 +100,20 @@ namespace CutListRepositoryPatternMVC.Areas.Engineer.Controllers
                 //check if insert
                 if (WorkOrderVM.WorkOrder.WorkOrderId == 0)
                 {
+                    //add WorkOrder
                     _unitOfWork.WorkOrder.Add(WorkOrderVM.WorkOrder);
+
+                    //versionDate
+                    //checked if it exists already
+                    //get version of the related date
+                    var currentVersionDateInDatabase = _unitOfWork.VersionDate.GetAll(filter: vd => vd.WorkOrderId == WorkOrderVM.WorkOrder.WorkOrderId && vd.CurrentDate == true);
+
+                    var versionDate1 = new VersionDate
+                    {
+                        DateEntered = WorkOrderVM.VersionDate1
+                    };
+                    //add versionDate related to this
+                    _unitOfWork.VersionDate.Add(versionDate1);
                 }//if
                 else//is update
                 {

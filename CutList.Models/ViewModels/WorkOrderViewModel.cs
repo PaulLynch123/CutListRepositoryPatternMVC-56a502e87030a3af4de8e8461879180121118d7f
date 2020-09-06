@@ -10,6 +10,13 @@ namespace CutList.Models.ViewModels
     {
         public WorkOrder WorkOrder { get; set; }
 
+        //to pass to version date object
+        [Display(Name = "Date Completed 123")]
+        //[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        //can't use date range with JQuery 9Would need to disable jQuery date validation
+        [DataType (DataType.Date)]
+        public DateTime? VersionDate1 { get; set; }
+
         //list of projects
         public IEnumerable<SelectListItem> ProjectsList { get; set; }
 
