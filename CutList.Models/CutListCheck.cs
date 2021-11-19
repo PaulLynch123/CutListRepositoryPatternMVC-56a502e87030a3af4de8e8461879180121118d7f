@@ -16,7 +16,18 @@ namespace CutList.Models
         [DataType(DataType.Date)]
         public DateTime DateEntered { get; set; }
 
+        public bool Bend { get; set; }
+        public bool Weld { get; set; }
+        public bool Paint { get; set; }
+        public bool Tinned { get; set; }
+        public bool Wrapped { get; set; }
+        [Display(Name = "Mould Cut")]
+        public bool MouldCut { get; set; }
+        public bool Pour { get; set; }
+        public bool Assy { get; set; }
+
         //based on entry of WorkOrder and PartOrder
+        /*
         public Task Bend { get; set; }
         public Task Weld { get; set; }
         public Task Paint { get; set; }
@@ -26,7 +37,7 @@ namespace CutList.Models
         public Task MouldCut { get; set; }
         public Task Pour { get; set; }
         public Task Assy { get; set; }
-
+        */
 
         //---------foreign keys and navigation---------------
 
