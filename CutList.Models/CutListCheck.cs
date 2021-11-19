@@ -16,7 +16,7 @@ namespace CutList.Models
         [DataType(DataType.Date)]
         public DateTime DateEntered { get; set; }
 
-        //based on entry of JobParts and PartOrder
+        //based on entry of WorkOrder and PartOrder
         public Task Bend { get; set; }
         public Task Weld { get; set; }
         public Task Paint { get; set; }
