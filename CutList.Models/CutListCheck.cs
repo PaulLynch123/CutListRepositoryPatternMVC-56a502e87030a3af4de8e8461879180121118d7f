@@ -16,6 +16,7 @@ namespace CutList.Models
         [DataType(DataType.Date)]
         public DateTime DateEntered { get; set; }
 
+        //marking that each task of the busbar prep is complete by factory worker
         public bool Bend { get; set; }
         public bool Weld { get; set; }
         public bool Paint { get; set; }
